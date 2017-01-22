@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>com.epam.intellij.plugins.atg</id>
+    <name>atg-plugin</name>
+    <version>0.1</version>
+    <vendor email="prokofiev.ad@yandex.ru" url="https://vk.com/buffagon">Aleksei Prokofev</vendor>
+
+    <description><![CDATA[
+      Add some helpers and refactoring for ATG developers.<br>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Release 0.1: Initial release.<br>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="162"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+
+    <project-components>
+        <component>
+            <implementation-class>com.epam.intellij.plugins.atg.managers.ATGModuleManager</implementation-class>
+            <skipForDefaultProject/>
+        </component>
+    </project-components>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor language="Manifest" implementationClass="com.epam.intellij.plugins.atg.references.ATGModuleCompletionContributor"/>
+        <codeInsight.lineMarkerProvider language="Manifest" implementationClass="com.epam.intellij.plugins.atg.references.ATGModuleDependencyLineMarker"/>
+    </extensions>
+
+    <actions>
+    </actions>
+
+</idea-plugin>

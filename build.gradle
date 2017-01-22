@@ -1,0 +1,39 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.2.0"
+}
+
+group 'com.epam.intellij.plugins'
+version "$version"
+
+apply plugin: 'kotlin'
+apply plugin: 'idea'
+apply plugin: 'org.jetbrains.intellij'
+
+idea {
+    project {
+        
+    }
+}
+
+intellij {
+    version = "IC-$ideaVersion"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
