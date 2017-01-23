@@ -1,16 +1,16 @@
 package com.epam.intellij.plugins.atg.managers
 
 import com.intellij.openapi.components.AbstractProjectComponent
+import com.intellij.openapi.project.DumbService
 import com.intellij.openapi.project.Project
-import org.jetbrains.lang.manifest.psi.ManifestFile
-
+import com.intellij.psi.PsiFile
 import java.util.*
 
 /**
  * @author Aleksei Prokofev
  */
 class ATGComponentManager private constructor(project: Project): AbstractProjectComponent(project){
-    val component: MutableMap<String, ManifestFile> = HashMap()
+    val components: MutableMap<String, PsiFile> = HashMap()
 
     companion object {
         fun getInstance(project: Project): ATGComponentManager {
@@ -19,6 +19,12 @@ class ATGComponentManager private constructor(project: Project): AbstractProject
     }
 
     override fun getComponentName(): String {
-        return "com.epam.intellij.plugins.atg.managers.ATGModuleManager"
+        return "com.epam.intellij.plugins.atg.managers.ATGComponentManager"
+    }
+
+    override fun projectOpened() {
+        DumbService.getInstance(myProject).smartInvokeLater {
+            //TODO: loop by modules
+        }
     }
 }

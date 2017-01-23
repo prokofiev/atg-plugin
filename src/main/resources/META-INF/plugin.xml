@@ -28,10 +28,12 @@
 
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.platform</depends>
-    
+
     <extensions defaultExtensionNs="com.intellij">
         <completion.contributor language="Manifest" implementationClass="com.epam.intellij.plugins.atg.references.ATGModuleCompletionContributor"/>
         <codeInsight.lineMarkerProvider language="Manifest" implementationClass="com.epam.intellij.plugins.atg.references.ATGModuleDependencyLineMarker"/>
+        <codeInsight.lineMarkerProvider language="Properties" implementationClass="com.epam.intellij.plugins.atg.nucleus.NucleusComponentLineMarker"/>
+        <fileTypeFactory implementation="com.epam.intellij.plugins.atg.nucleus.NucleusComponentFileTypeFactory"/>
     </extensions>
 
     <actions>
